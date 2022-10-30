@@ -7,7 +7,7 @@ import { ArtistDetails, TopArtists, AroundYou, Discover, Search, SongDetails, To
 function App() {
   const { activeSong } = useSelector((state) => state.player);
   return (
-    <div className="relative flex">
+    <div className="relative flex h-screen">
       <Sidebar />
       <div className='flex-1 flex flex-col'>
         <Searchbar />
