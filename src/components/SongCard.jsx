@@ -6,25 +6,27 @@ import { playPause, setActiveSong } from "../redux/features/playerSlice";
 
 const SongCard = ({ song,isPlaying,activeSong, i, data }) => {
 
-  const handlePauseClick = () => {
+  const dispatch = useDispatch();
 
+  const handlePauseClick = () => {
+    dispatch(playPause(false))
   }
 
   const handlePlayClick = () => {
-
+    dispatch(setActiveSong({song, data, i}));
+    dispatch(playPause(true));
   }
 
-//   FIX Hover Effect not working.
 
   return (
-    <div className="bg-neutral p-4 rounded flex flex-col cursor-pointer animate-slideup">
+    <div className="group bg-neutral p-4 rounded flex flex-col cursor-pointer animate-slideup">
       <div className="overflow-hidden bg-base-100 rounded relative">
         <div
           className={`absolute inset-0 flex justify-center items-center bg-black bg-opacity-50 group-hover:flex ${
             activeSong?.title === song.title
               ? "flex bg-black bg-opacity-70"
               : "hidden"
-          }`}
+          } `}
         >
           <PlayPause
             song={song}
