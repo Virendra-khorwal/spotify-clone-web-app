@@ -1,14 +1,17 @@
+import { useState } from "react";
 import { FaCloudsmith, FaBolt, FaSlackHash, FaHatWizard } from "react-icons/fa";
 import { IoMdPin } from "react-icons/io";
-import { Link, useLocation, useParams } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
+
+
 const Sidebar = () => {
 
   const {pathname} = useLocation()
-  console.log(pathname)
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
-    <div className="w-40 py-4 flex flex-col items-center gap-y-24 px-10 bg-neutral">
-      <div className="flex items-center gap-4 text-3xl">
+    <div className="lg:w-40 md:w-32 py-4 md:flex hidden flex-col items-center gap-y-24 px-10 bg-neutral">
+      <div className="flex items-center gap-4 lg:text-3xl md:text-xl">
         <FaCloudsmith /> <p>Musix</p>
       </div>
       <div className="flex flex-col gap-y-10 text-3xl">
