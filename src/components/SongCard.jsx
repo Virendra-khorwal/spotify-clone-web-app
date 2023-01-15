@@ -4,6 +4,8 @@ import { useDispatch } from "react-redux";
 import PlayPause from "./PlayPause";
 import { playPause, setActiveSong } from "../redux/features/playerSlice";
 
+import notAvailable from "../assets/not-available.png";
+
 const SongCard = ({ song,isPlaying,activeSong, i, data }) => {
 
   const dispatch = useDispatch();
@@ -16,6 +18,8 @@ const SongCard = ({ song,isPlaying,activeSong, i, data }) => {
     dispatch(setActiveSong({song, data, i}));
     dispatch(playPause(true));
   }
+
+  console.log(song.images?.coverart);
 
 
   return (
@@ -36,7 +40,12 @@ const SongCard = ({ song,isPlaying,activeSong, i, data }) => {
             handlePlay={handlePlayClick}
           />
         </div>
-        <img src={song.images.coverart} alt="cover art" />
+        {song.images ? (
+          <img src={song.images.coverart} alt="cover art" />
+        ) : (
+          <img src={notAvailable} alt="image not available" />
+        )}
+        {/* <img src={song.images?.coverart} alt="cover art" /> */}
       </div>
       <div className="mt-2">
         <h1 className="font-bold text-xl truncate">
